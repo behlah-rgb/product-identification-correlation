@@ -83,19 +83,19 @@ Do this on the M1 MacBook Air, which already has the project folder. Everyone el
 4. Click **Create repository** and copy the URL shown, e.g. `https://github.com/behlah-rgb/product-identification-correlation.git`.
 
 ## 2.4 Push the project
-Open **Terminal** and run these one at a time:
+<!-- Open **Terminal** and run these one at a time:
 
 ```bash
 cd "/Users/satvikakshintala/Documents/Claude/College Projects/product-identification-correlation"
 
 # first time using git on this Mac? set your name + email (use your GitHub email)
 git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
+git config --global user.email "you@example.com" -->
 
 # put the repo URL into all notebooks (Colab needs it)
 .venv/bin/python tools/set_repo_url.py https://github.com/behlah-rgb/product-identification-correlation.git
 
-git init -b main
+<!-- git init -b main
 git add .
 git status            # check: NO .venv/, data/, *.pt or local_config.json listed
 git commit -m "Initial project structure"
@@ -108,18 +108,18 @@ and log in through the browser:
 ```bash
 brew install gh
 gh auth login          # choose: GitHub.com → HTTPS → Yes (authenticate git) → Login with a web browser
-git push -u origin main
-```
+git push -u origin main 
+```-->
 
 ## 2.5 Invite the team
 On the repo page: **Settings → Collaborators → Add people** → add P1, P2 and P4 by GitHub username. They must
 **accept the email invite**.
 
-## 2.6 Private repo only: make a token for Colab
+<!-- ## 2.6 Private repo only: make a token for Colab
 1. GitHub → your profile picture → **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**.
 2. Name: `colab-ivp`. Expiration: 90 days. Repository access: **Only select repositories → product-identification-correlation**.
 3. Permissions → Repository permissions → **Contents: Read-only**. Click Generate and **copy the token**.
-4. Send it to the team **privately** (not in a public group). Each person adds it in Colab as the secret `GITHUB_TOKEN` (Part 3.4).
+4. Send it to the team **privately** (not in a public group). Each person adds it in Colab as the secret `GITHUB_TOKEN` (Part 3.4). -->
 
 ## 2.7 Create the shared Drive folder
 1. Open **drive.google.com** → **New → New folder** → name it exactly **`product-identification-correlation_data`**.
@@ -142,7 +142,7 @@ The owner (P3) can skip this.
 2. Right-click → **Organise → Add shortcut** → choose **My Drive** → Add.
 3. Check: `product-identification-correlation_data` now appears in **My Drive**. Colab looks for it exactly there.
 
-## 3.2 Mac setup (P2 on the M5; P3 already has it)
+<!-- ## 3.2 Mac setup (P2 on the M5; P3 already has it)
 
 1. **Install the basics** (skip anything you already have). Open Terminal:
    ```bash
@@ -170,7 +170,7 @@ The owner (P3) can skip this.
    python -c "import torch, ultralytics, cv2, mlxtend; print('OK, Apple GPU:', torch.backends.mps.is_available())"
    ```
    It should print `OK, Apple GPU: True`.
-6. Continue with **3.5 (Drive for Desktop)** and **3.6 (VS Code)**.
+6. Continue with **3.5 (Drive for Desktop)** and **3.6 (VS Code)**. -->
 
 ## 3.3 Windows setup (P1 on the Lenovo LOQ with NVIDIA; P4 on the Vivobook without)
 
