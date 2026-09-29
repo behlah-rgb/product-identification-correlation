@@ -30,8 +30,8 @@ together (the "beers and diapers" correlations) and **KNN** predicts the next it
 
 | What | Where | Why |
 |---|---|---|
-| Code (notebooks, `src/`) | **GitHub** repo `IVP_Project` | Everyone has the same code |
-| Datasets, photos, trained models, results | Google Drive folder **`IVP_Project_data`** | Big files, shared between laptops and Colab |
+| Code (notebooks, `src/`) | **GitHub** repo `product-identification-correlation` | Everyone has the same code |
+| Datasets, photos, trained models, results | Google Drive folder **`product-identification-correlation_data`** | Big files, shared between laptops and Colab |
 | Paper | **Overleaf** (P4 shares the link) | Everyone can write at once |
 
 Every notebook finds the right place by itself (Colab, Mac or Windows). If the real data isn't there yet, it
@@ -78,28 +78,28 @@ Do this on the M1 MacBook Air, which already has the project folder. Everyone el
 
 ## 2.3 Create the GitHub repo
 1. Go to **github.com/new**.
-2. Repository name: `IVP_Project`. Choose Public or Private.
+2. Repository name: `product-identification-correlation`. Choose Public or Private.
 3. **Don't** tick "Add a README", ".gitignore" or "license" (we already have them).
-4. Click **Create repository** and copy the URL shown, e.g. `https://github.com/<your-username>/IVP_Project.git`.
+4. Click **Create repository** and copy the URL shown, e.g. `https://github.com/behlah-rgb/product-identification-correlation.git`.
 
 ## 2.4 Push the project
 Open **Terminal** and run these one at a time:
 
 ```bash
-cd "/Users/satvikakshintala/Documents/Claude/College Projects/IVP_Project"
+cd "/Users/satvikakshintala/Documents/Claude/College Projects/product-identification-correlation"
 
 # first time using git on this Mac? set your name + email (use your GitHub email)
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 
 # put the repo URL into all notebooks (Colab needs it)
-.venv/bin/python tools/set_repo_url.py https://github.com/<your-username>/IVP_Project.git
+.venv/bin/python tools/set_repo_url.py https://github.com/behlah-rgb/product-identification-correlation.git
 
 git init -b main
 git add .
 git status            # check: NO .venv/, data/, *.pt or local_config.json listed
 git commit -m "Initial project structure"
-git remote add origin https://github.com/<your-username>/IVP_Project.git
+git remote add origin https://github.com/behlah-rgb/product-identification-correlation.git
 git push -u origin main
 ```
 
@@ -117,17 +117,17 @@ On the repo page: **Settings → Collaborators → Add people** → add P1, P2 a
 
 ## 2.6 Private repo only: make a token for Colab
 1. GitHub → your profile picture → **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**.
-2. Name: `colab-ivp`. Expiration: 90 days. Repository access: **Only select repositories → IVP_Project**.
+2. Name: `colab-ivp`. Expiration: 90 days. Repository access: **Only select repositories → product-identification-correlation**.
 3. Permissions → Repository permissions → **Contents: Read-only**. Click Generate and **copy the token**.
 4. Send it to the team **privately** (not in a public group). Each person adds it in Colab as the secret `GITHUB_TOKEN` (Part 3.4).
 
 ## 2.7 Create the shared Drive folder
-1. Open **drive.google.com** → **New → New folder** → name it exactly **`IVP_Project_data`**.
+1. Open **drive.google.com** → **New → New folder** → name it exactly **`product-identification-correlation_data`**.
 2. Right-click it → **Share** → add P1, P2 and P4's Google emails as **Editor** → Send.
 
 ## 2.8 Tell the team
 Post in the group chat:
-> Setup done. Repo: `<URL>` (accept the GitHub invite). Drive folder `IVP_Project_data` is shared with you.
+> Setup done. Repo: `<URL>` (accept the GitHub invite). Drive folder `product-identification-correlation_data` is shared with you.
 > Follow TEAM_GUIDE.md Part 3.
 
 Then do Part 3 yourself (you only need 3.1, 3.2 Mac steps 5-6, 3.5, 3.6 and 3.7, because the environment already exists on the M1).
@@ -138,9 +138,9 @@ Then do Part 3 yourself (you only need 3.1, 3.2 Mac steps 5-6, 3.5, 3.6 and 3.7,
 
 ## 3.1 Add the shared Drive folder to your own Drive (everyone, 1 min)
 The owner (P3) can skip this.
-1. drive.google.com → **Shared with me** → find `IVP_Project_data`.
+1. drive.google.com → **Shared with me** → find `product-identification-correlation_data`.
 2. Right-click → **Organise → Add shortcut** → choose **My Drive** → Add.
-3. Check: `IVP_Project_data` now appears in **My Drive**. Colab looks for it exactly there.
+3. Check: `product-identification-correlation_data` now appears in **My Drive**. Colab looks for it exactly there.
 
 ## 3.2 Mac setup (P2 on the M5; P3 already has it)
 
@@ -155,8 +155,8 @@ The owner (P3) can skip this.
 3. **Download the code:**
    ```bash
    mkdir -p ~/Documents/Projects && cd ~/Documents/Projects
-   git clone https://github.com/<username>/IVP_Project.git
-   cd IVP_Project
+   git clone https://github.com/<username>/product-identification-correlation.git
+   cd product-identification-correlation
    ```
 4. **Create the Python environment and install packages** (~5-10 min; it downloads PyTorch):
    ```bash
@@ -185,8 +185,8 @@ The owner (P3) can skip this.
 3. **Download the code:**
    ```powershell
    mkdir $HOME\Documents\Projects; cd $HOME\Documents\Projects
-   git clone https://github.com/<username>/IVP_Project.git     # a browser window opens to log in to GitHub
-   cd IVP_Project
+   git clone https://github.com/<username>/product-identification-correlation.git     # a browser window opens to log in to GitHub
+   cd product-identification-correlation
    ```
 4. **Create the environment:**
    ```powershell
@@ -219,7 +219,7 @@ The owner (P3) can skip this.
    - Private repo only: `GITHUB_TOKEN` = the token from P3. Turn on **Notebook access**.
 3. For training (P1): **Runtime → Change runtime type → T4 GPU → Save**.
 4. Run the first cell (the SETUP cell). Colab asks to **connect to Google Drive**: choose your account and allow everything.
-   At the end it prints `Running on : Google Colab` and `DATA_DIR : /content/drive/MyDrive/IVP_Project_data`.
+   At the end it prints `Running on : Google Colab` and `DATA_DIR : /content/drive/MyDrive/product-identification-correlation_data`.
 
    If it says `requirements.txt not found`, the `REPO_URL` in that cell is empty. Tell P3 (step 2.4 was skipped).
 
@@ -228,19 +228,19 @@ This lets your laptop's notebooks read and write the **same** shared folder that
 
 1. Install **Google Drive for Desktop** (google.com/drive/download) and sign in.
 2. Find the folder:
-   - **Mac:** Finder sidebar → Google Drive → My Drive → `IVP_Project_data`. The real path is
-     `~/Library/CloudStorage/GoogleDrive-<your-email>/My Drive/IVP_Project_data`.
-   - **Windows:** File Explorer → **G:** drive → My Drive → `IVP_Project_data`, so the path is `G:/My Drive/IVP_Project_data`.
-3. Right-click `IVP_Project_data` → **Make available offline** (Mac) / **Offline access → Available offline** (Windows).
+   - **Mac:** Finder sidebar → Google Drive → My Drive → `product-identification-correlation_data`. The real path is
+     `~/Library/CloudStorage/GoogleDrive-<your-email>/My Drive/product-identification-correlation_data`.
+   - **Windows:** File Explorer → **G:** drive → My Drive → `product-identification-correlation_data`, so the path is `G:/My Drive/product-identification-correlation_data`.
+3. Right-click `product-identification-correlation_data` → **Make available offline** (Mac) / **Offline access → Available offline** (Windows).
    Without this, training is slow because files stream from the internet.
 4. In the project folder, **copy `local_config.example.json` to `local_config.json`** and edit it:
    ```json
    {
-     "data_dir": "~/Library/CloudStorage/GoogleDrive-you@gmail.com/My Drive/IVP_Project_data",
+     "data_dir": "~/Library/CloudStorage/GoogleDrive-you@gmail.com/My Drive/product-identification-correlation_data",
      "ROBOFLOW_API_KEY": "paste-your-key-or-leave-this"
    }
    ```
-   On Windows use forward slashes: `"data_dir": "G:/My Drive/IVP_Project_data"`.
+   On Windows use forward slashes: `"data_dir": "G:/My Drive/product-identification-correlation_data"`.
    This file stays on your laptop only and is never committed.
 
 If you skip this step, your notebooks save to a local `data/` folder inside the project. That works, but nobody else sees your results.
@@ -248,7 +248,7 @@ If you skip this step, your notebooks save to a local `data/` folder inside the 
 ## 3.6 VS Code (everyone who runs notebooks locally)
 1. Install **VS Code** (code.visualstudio.com).
 2. Extensions (square icon on the left) → install **Python** and **Jupyter** (both by Microsoft).
-3. **File → Open Folder** → select the `IVP_Project` folder.
+3. **File → Open Folder** → select the `product-identification-correlation` folder.
 4. Open any notebook in `notebooks/` → top right **Select Kernel → Python Environments → `.venv`**.
    (If `.venv` isn't listed: Cmd/Ctrl+Shift+P → "Python: Select Interpreter" → *Enter interpreter path* →
    `.venv/bin/python` on Mac, `.venv\Scripts\python.exe` on Windows.)
@@ -258,7 +258,7 @@ Open `notebooks/04_apriori_knn.ipynb` and run **only the first cell** (▶ next 
 ```
 Running on : macOS-... / Windows-... / Google Colab
 Device     : 0 (NVIDIA) / mps (Mac) / cpu
-DATA_DIR   : ...IVP_Project_data      ← the shared folder, not .../IVP_Project/data
+DATA_DIR   : ...product-identification-correlation_data      ← the shared folder, not .../product-identification-correlation/data
 ```
 Post "setup done ✅ (device: …)" in the group chat.
 
@@ -292,7 +292,7 @@ Post "setup done ✅ (device: …)" in the group chat.
 1. Open `02_yolov8_training.ipynb` in Colab (Part 3.4), and set **Runtime → T4 GPU**.
 2. Run the **SETUP** cell and allow Drive access.
 3. In the next cell (dataset config), set `RF_VERSION = <number from 4.3>`. Leave `DEMO = False`. Run it.
-4. **Section 1 (Get the dataset):** run it. It downloads about 400 images into `IVP_Project_data/datasets/indian_grocery/`
+4. **Section 1 (Get the dataset):** run it. It downloads about 400 images into `product-identification-correlation_data/datasets/indian_grocery/`
    and prints the **10 class names**.
    → **Post the class names in the group chat now.** P4 needs them to buy products, and P3 and P2 need them later.
 5. **Section 2 (Explore):** run both cells. You'll see images per split, a bar chart of boxes per class, and 4 sample
@@ -302,7 +302,7 @@ Post "setup done ✅ (device: …)" in the group chat.
 1. **Section 3:** in the config cell, leave `RUN_NAME = "public_only"`, `MODEL = "yolov8n.pt"` and `EPOCHS = 50`. Run the training cell.
 2. You'll see a progress bar per epoch. It takes about **10-15 min on a T4**.
    **Keep the Colab tab open and your laptop awake.** Free Colab disconnects if the tab idles too long.
-3. When it finishes it prints `Training took X min` and the run folder, e.g. `IVP_Project_data/runs/public_only_cuda-Tesla_T4/`.
+3. When it finishes it prints `Training took X min` and the run folder, e.g. `product-identification-correlation_data/runs/public_only_cuda-Tesla_T4/`.
    Because this is in Drive, **it's already shared with the team**.
 
 **If Colab disconnects mid-training:** reconnect, run SETUP and the config and dataset cells again, then run the resume cell with
@@ -313,7 +313,7 @@ the right folder name: `run_dir = detection.resume(RUNS_DIR / "public_only_cuda-
 ## 4.6 Day 1-2: evaluate (10 min)
 1. **Section 4:** run all cells in order.
    - **Evaluate:** prints mAP@50, mAP@50-95, precision, recall and a **per-class table**, and saves
-     `IVP_Project_data/results/yolo_public_only.json`. **P3's notebook reads this file automatically.**
+     `product-identification-correlation_data/results/yolo_public_only.json`. **P3's notebook reads this file automatically.**
    - **Training curves:** loss should go down and mAP up. Saved as `results/training_curves_public_only.png`.
    - **Confusion matrix + PR curve:** shows which products get confused with each other.
    - **Predictions:** 4 test images with predicted boxes.
@@ -324,7 +324,7 @@ the right folder name: `run_dir = detection.resume(RUNS_DIR / "public_only_cuda-
 
 ## 4.7 Save your notebook to GitHub
 Colab edits are **not** saved to GitHub automatically.
-- **File → Save a copy in GitHub** → repo `IVP_Project`, branch `main`, path `notebooks/02_yolov8_training.ipynb` →
+- **File → Save a copy in GitHub** → repo `product-identification-correlation`, branch `main`, path `notebooks/02_yolov8_training.ipynb` →
   commit message like "P1: trained public_only model" → OK.
 - Or, on the LOQ: `git pull` → edit → `git add notebooks/02_yolov8_training.ipynb` → `git commit -m "..."` → `git push`.
 
@@ -338,7 +338,7 @@ Colab edits are **not** saved to GitHub automatically.
 6. **Continue a Colab run on the LOQ:** set `START_WEIGHTS = detection.latest_run_weights("public_only")` and train again.
 
 ## 4.9 Your deliverables for the update
-Save these to a Drive folder `IVP_Project_data/update1/P1/`, as files or screenshots (Mac: Cmd+Shift+4, Windows: Win+Shift+S):
+Save these to a Drive folder `product-identification-correlation_data/update1/P1/`, as files or screenshots (Mac: Cmd+Shift+4, Windows: Win+Shift+S):
 - [ ] Class distribution chart (`results/dataset_class_distribution.png`)
 - [ ] mAP / precision / recall numbers plus the per-class table
 - [ ] Training curves (`results/training_curves_public_only.png`)
@@ -415,7 +415,7 @@ This proves the pipeline works on real photos before the shelf exists.
    - `before.jpg` → remove 1-2 items → `after.jpg` → put the items back. Repeat for 4 sessions.
 5. **Put them in Drive** (Google Drive app on the phone, or upload from the laptop):
    ```
-   IVP_Project_data/sessions/
+   product-identification-correlation_data/sessions/
        planogram.json
        sessions.csv
        s001/before.jpg   s001/after.jpg
@@ -443,7 +443,7 @@ This proves the pipeline works on real photos before the shelf exists.
 frame, and not too small. Each marker should be at least ~40 px wide in the photo.
 
 ## 5.6 Your deliverables for the update
-Save to `IVP_Project_data/update1/P2/`:
+Save to `product-identification-correlation_data/update1/P2/`:
 - [ ] Preprocessing step figure plus histograms (notebook 01 §1)
 - [ ] ArUco detection → rectified shelf → 9 cells (a real phone photo if you have one)
 - [ ] Degradation vs recovery figure (§3) and the ablation chart (§4)
@@ -494,7 +494,7 @@ and KNN recommendation results.
 ## 6.3 Day 1: notebook 05, real Groceries data (20 min)
 1. Open `notebooks/05_groceries_real.ipynb` and run top to bottom. It downloads the Kaggle dataset automatically (no login
    needed). If the download fails, get `Groceries_dataset.csv` from
-   kaggle.com/datasets/heeraldedhia/groceries-dataset and put it in `IVP_Project_data/datasets/groceries/`.
+   kaggle.com/datasets/heeraldedhia/groceries-dataset and put it in `product-identification-correlation_data/datasets/groceries/`.
 2. You'll see 14,963 baskets and 167 items (average 2.5 items per basket), the **top 15 rules by lift**, the
    **"surprising" pairs** (strong lift between items that aren't obviously related, which is the beers-and-diapers angle), and a
    lift heatmap.
@@ -528,7 +528,7 @@ and KNN recommendation results.
    ```
 
 ## 6.5 Your deliverables for the update
-Save to `IVP_Project_data/update1/P3/`:
+Save to `product-identification-correlation_data/update1/P3/`:
 - [ ] Planted rules plus the top-10 rules table (simulated)
 - [ ] Clean vs through-detector recovery table, and the **noise sweep figure** (`results/exp4_noise_sweep.png`)
 - [ ] KNN table (`results/exp5_knn.csv`) plus the worked example
@@ -590,7 +590,7 @@ Wait for P1's **class names** (posted on Day 1). Then:
 6. Write the plan in a short doc for the group: shelf type, size, cost, who buys what, and when it will be ready.
 
 ## 7.5 Day 2: collect everyone's text and make the update slides (60 min)
-1. Collect the 3-4 sentence summaries and figures from `IVP_Project_data/update1/P1…P3/`.
+1. Collect the 3-4 sentence summaries and figures from `product-identification-correlation_data/update1/P1…P3/`.
 2. Paste each person's summary into the right Methodology subsection. Rough is fine; the owners will polish it later.
 3. Make the slides (Google Slides, 7-8 slides, see Part 8).
 
@@ -640,7 +640,7 @@ Wait for P1's **class names** (posted on Day 1). Then:
 
 ## 10.1 Git cheat sheet (every work session)
 ```bash
-cd <path>/IVP_Project
+cd <path>/product-identification-correlation
 git pull                                  # 1. ALWAYS first: get teammates' changes
 # ... work ...
 git status                                # 2. see what changed
@@ -653,7 +653,7 @@ git push                                  # 5. share
 - **Accidentally changed someone's notebook:** `git checkout -- notebooks/<file>.ipynb` before committing.
 
 ## 10.2 Where results end up
-Everything is saved in `IVP_Project_data/results/`:
+Everything is saved in `product-identification-correlation_data/results/`:
 - `yolo_public_only.json`: detector metrics (P1)
 - `dataset_class_distribution.png`, `training_curves_*.png` (P1)
 - `ablation_preprocessing.csv/.png` (P2)
@@ -661,14 +661,14 @@ Everything is saved in `IVP_Project_data/results/`:
 - `exp4_noise_sweep.csv/.png`, `exp4_summary.json`, `exp5_knn.csv` (P3)
 - `groceries_top_rules.csv`, `groceries_lift_heatmap.png`, `exp5b_knn_groceries.csv` (P3)
 
-Training runs (weights, plots) are in `IVP_Project_data/runs/<experiment>_<machine>/`.
+Training runs (weights, plots) are in `product-identification-correlation_data/runs/<experiment>_<machine>/`.
 
 ## 10.3 Troubleshooting
 
 | Problem | Fix |
 |---|---|
 | `ModuleNotFoundError` in VS Code | Kernel isn't `.venv`. Top right → Select Kernel → `.venv` |
-| First cell prints `DATA_DIR: .../IVP_Project/data` instead of the Drive folder | `local_config.json` is missing or has the wrong path (Part 3.5). Check the path exists in Finder / Explorer |
+| First cell prints `DATA_DIR: .../product-identification-correlation/data` instead of the Drive folder | `local_config.json` is missing or has the wrong path (Part 3.5). Check the path exists in Finder / Explorer |
 | Colab: `requirements.txt not found` | `REPO_URL` empty in the first cell. P3 runs `tools/set_repo_url.py` and pushes |
 | Colab: `git clone` fails (private repo) | Add the `GITHUB_TOKEN` secret with notebook access (Part 2.6 / 3.4) |
 | Colab: Drive folder not found | You didn't add the shortcut to My Drive (Part 3.1) |

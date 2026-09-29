@@ -40,7 +40,7 @@ start immediately. Demo numbers are *not* results - don't put them in the paper.
 ## How the team shares work
 
 - **Code → GitHub.** Everyone clones the same repo. Change `src/` or notebooks → commit → push.
-- **Data, weights, results → one Google Drive folder `IVP_Project_data/`.** Every notebook reads and writes there,
+- **Data, weights, results → one Google Drive folder `product-identification-correlation_data/`.** Every notebook reads and writes there,
   on every machine. A model trained on Colab today can be evaluated on a Mac tomorrow.
 - **Same notebook everywhere.** The first cell detects Colab / NVIDIA / Apple GPU / CPU and sets paths.
 
@@ -52,7 +52,7 @@ start immediately. Demo numbers are *not* results - don't put them in the paper.
 | **M1 MacBook Air (8 GB)** | AI notebooks 04 + 05 (CPU, 1-2 min each), paper |
 | **Asus Vivobook** | Roboflow labelling, paper, AI notebooks |
 
-**Training on different devices:** runs are saved to `IVP_Project_data/runs/<experiment>_<machine>/`.
+**Training on different devices:** runs are saved to `product-identification-correlation_data/runs/<experiment>_<machine>/`.
 To continue a run elsewhere, set `START_WEIGHTS = detection.latest_run_weights("public_only")` in notebook 02.
 If Colab disconnects mid-training, `detection.resume(run_dir)` resumes it exactly (Colab only, same paths).
 Two people can train two *different* experiments at the same time (e.g. Colab + LOQ).
@@ -63,19 +63,19 @@ Two people can train two *different* experiments at the same time (e.g. Colab + 
 
 ### Step 1 - GitHub repo (one person, ~5 min)
 ```bash
-cd IVP_Project
+cd product-identification-correlation
 git init -b main && git add . && git commit -m "Initial project structure"
 # create an empty repo on github.com (public is easiest for Colab), then:
-git remote add origin https://github.com/<you>/IVP_Project.git
+git remote add origin https://github.com/<you>/product-identification-correlation.git
 git push -u origin main
 ```
 Before the first commit, put the URL into every notebook (Colab needs it):
-`python tools/set_repo_url.py https://github.com/<you>/IVP_Project.git`. Add the other three as collaborators.
+`python tools/set_repo_url.py https://github.com/<you>/product-identification-correlation.git`. Add the other three as collaborators.
 
 ### Step 2 - Shared Google Drive folder (one person, ~2 min)
-Create `IVP_Project_data` in **My Drive** and share it with the team (Editor).
+Create `product-identification-correlation_data` in **My Drive** and share it with the team (Editor).
 Each teammate: open "Shared with me" → right-click the folder → **Organise → Add shortcut → My Drive**.
-Now it's at `MyDrive/IVP_Project_data` for everyone - that's where Colab looks.
+Now it's at `MyDrive/product-identification-correlation_data` for everyone - that's where Colab looks.
 
 ### Step 3 - API keys
 - **Roboflow** (P1, P4): sign up at roboflow.com → Settings → API key.
@@ -86,7 +86,7 @@ Now it's at `MyDrive/IVP_Project_data` for everyone - that's where Colab looks.
 
 **Mac (M1 / M5):**
 ```bash
-git clone https://github.com/<you>/IVP_Project.git && cd IVP_Project
+git clone https://github.com/<you>/product-identification-correlation.git && cd product-identification-correlation
 python3.12 -m venv .venv          # brew install python@3.12 if missing
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -94,7 +94,7 @@ pip install -r requirements.txt
 
 **Windows + NVIDIA (Lenovo LOQ):** install Python 3.12 from python.org, then in PowerShell:
 ```powershell
-git clone https://github.com/<you>/IVP_Project.git; cd IVP_Project
+git clone https://github.com/<you>/product-identification-correlation.git; cd product-identification-correlation
 py -3.12 -m venv .venv
 .venv\Scripts\activate
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128   # CUDA build FIRST
@@ -110,8 +110,8 @@ python -c "import torch; print(torch.cuda.is_available())"                      
 
 ### Step 5 - Point laptops at the shared Drive folder (optional but recommended)
 Install **Google Drive for Desktop**, then in `local_config.json` set `data_dir` to the synced folder, e.g.
-- Mac: `~/Library/CloudStorage/GoogleDrive-<email>/My Drive/IVP_Project_data`
-- Windows: `G:/My Drive/IVP_Project_data`
+- Mac: `~/Library/CloudStorage/GoogleDrive-<email>/My Drive/product-identification-correlation_data`
+- Windows: `G:/My Drive/product-identification-correlation_data`
 
 Right-click the folder → *Available offline* so training isn't slowed by streaming. Without this step, data
 goes to a local `data/` folder in the repo (fine for solo work, but results won't be shared).
@@ -140,7 +140,7 @@ names and detector error profile automatically.
 
 1. Fix the phone/webcam on a tripod facing the shelf; stick ArUco markers 0-3 (TL, TR, BR, BL) with each
    marker's **centre on a corner of the 3×3 area**. Keep lighting the same for before/after.
-2. Write `IVP_Project_data/sessions/planogram.json` - which product is in each cell:
+2. Write `product-identification-correlation_data/sessions/planogram.json` - which product is in each cell:
    ```json
    {"0,0": "bournvita", "0,1": "nescafe", "0,2": "...", "1,0": "...", "...": "..."}
    ```
@@ -159,7 +159,7 @@ names and detector error profile automatically.
 
 ## Experiments → paper tables
 
-| # | Question | Notebook | Output in `IVP_Project_data/results/` |
+| # | Question | Notebook | Output in `product-identification-correlation_data/results/` |
 |---|---|---|---|
 | 1 | Do own shelf photos close the domain gap? | 02 §5 | `exp1_domain_gap.csv` |
 | 2 | Does preprocessing help in bad lighting? | 01 §4 | `ablation_preprocessing.csv/.png` |
@@ -169,7 +169,7 @@ names and detector error profile automatically.
 
 ## Troubleshooting
 - **`ModuleNotFoundError`** in VS Code → the kernel isn't `.venv`. Re-select it (top right).
-- **Colab can't find `requirements.txt`** → `REPO_URL` is empty and the code isn't in `MyDrive/IVP_Project`.
+- **Colab can't find `requirements.txt`** → `REPO_URL` is empty and the code isn't in `MyDrive/product-identification-correlation`.
 - **Roboflow download fails** → check `RF_VERSION` on the dataset page, and that the API key secret is enabled.
 - **CUDA out of memory on the 3050** → `batch=8` in `detection.train(...)`.
 - **Windows path problems** → avoid folder names ending in a space (e.g. `College Projects `).

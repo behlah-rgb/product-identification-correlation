@@ -1,7 +1,7 @@
 """
 Put the team's GitHub URL into the setup cell of every notebook (needed for Colab).
 
-    python tools/set_repo_url.py https://github.com/<you>/IVP_Project.git
+    python tools/set_repo_url.py https://github.com/<you>/product-identification-correlation.git
 """
 import json
 import re

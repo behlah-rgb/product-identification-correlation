@@ -5,7 +5,7 @@ so the SAME notebook runs unchanged on Colab, a Mac, or a Windows/NVIDIA laptop.
 Path resolution for DATA_DIR (datasets, photos, trained weights, results):
   1. IVP_DATA_DIR environment variable, if set
   2. "data_dir" in <repo>/local_config.json, if present (gitignored, per laptop)
-  3. On Colab: /content/drive/MyDrive/IVP_Project_data  (Google Drive)
+  3. On Colab: /content/drive/MyDrive/product-identification-correlation_data  (Google Drive)
   4. Otherwise: <repo>/data
 
 Point every laptop's DATA_DIR at the same Google Drive folder (via Google
@@ -20,7 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 IN_COLAB = "google.colab" in sys.modules
-COLAB_DATA_DIR = Path("/content/drive/MyDrive/IVP_Project_data")
+COLAB_DATA_DIR = Path("/content/drive/MyDrive/product-identification-correlation_data")
 
 
 def _local_config():

@@ -39,7 +39,7 @@ Three short paragraphs, 3-4 references each:
 - Hardware: Colab T4, RTX 3050 laptop, Apple M-series - epochs, image size, batch
 - Metrics: mAP@50, mAP@50-95, P/R/F1, rule recall & precision@k, Hit@1/Hit@3
 
-## 5. Results  *(fill from `IVP_Project_data/results/`)*
+## 5. Results  *(fill from `product-identification-correlation_data/results/`)*
 
 **Table 1 - Detection (Exp 1)** · `yolo_public_only.json`, `exp1_domain_gap.csv`
 | Training data | Test set | mAP@50 | mAP@50-95 | P | R |
