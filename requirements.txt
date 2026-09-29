@@ -1,0 +1,15 @@
+# PyTorch is NOT listed here on purpose:
+#  - Colab already has it (with GPU support)
+#  - Windows + NVIDIA: install the CUDA build FIRST (see README), then this file
+#  - Mac: installed automatically by ultralytics (Apple GPU / mps works out of the box)
+ultralytics>=8.3
+opencv-python>=4.8
+mlxtend>=0.23
+scikit-learn>=1.3
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+pyyaml>=6.0
+roboflow>=1.1
+kagglehub>=0.3
+ipykernel

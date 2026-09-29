@@ -1,0 +1,18 @@
+# per-laptop settings / secrets
+local_config.json
+.env
+
+# environments
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# data, weights, results live in the shared Google Drive folder, not git
+data/
+*.pt
+runs/
+datasets/
+
+.DS_Store
